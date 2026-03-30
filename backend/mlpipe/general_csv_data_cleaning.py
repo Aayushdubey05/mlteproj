@@ -1,128 +1,72 @@
 """
-General Data Cleaning Module for Data Science Projects
+General CSV Data Cleaning Module for Data Science Projects
 
-This module accepts a SQL file, executes it to fetch data, performs general
-level data cleaning, and outputs a new SQL file with INSERT statements
-for the cleaned data.
+This module accepts a CSV file, loads the data, performs general
+level data cleaning, and outputs a new CSV file with the cleaned data.
 
 Usage:
-    python general_data_cleaning.py <input_sql_file> [--output <output_sql_file>]
+    python general_csv_data_cleaning.py <input_csv_file> [--output <output_csv_file>]
 """
 
 import pandas as pd
 import numpy as np
-from sqlalchemy import create_engine, text
 import re
 import os
-import sqlite3
 from datetime import datetime
 from typing import Optional, List, Dict, Any, Tuple
 
 
-class DataCleaner:
+class CsvDataCleaner:
     """
     A class to perform general level data cleaning operations on datasets
-    loaded from SQL databases and export cleaned data as SQL INSERT statements.
+    loaded from CSV files and export cleaned data as a new CSV file.
     """
 
-    def __init__(self, connection_string: Optional[str] = None):
+    def __init__(self):
         """
-        Initialize the DataCleaner.
-
-        Args:
-            connection_string: SQL database connection string.
+        Initialize the CsvDataCleaner.
         """
-        self.connection_string = connection_string
-        self.engine = None
         self.df = None
         self.table_name = "cleaned_data"
         self.cleaning_report = {}
 
-    def connect(self, connection_string: str) -> None:
-        """Establish connection to the SQL database."""
-        self.connection_string = connection_string
-        self.engine = create_engine(connection_string)
-
-    def load_from_sql_file(
+    def load_from_csv_file(
         self,
-        sql_file_path: str,
-        use_in_memory_db: bool = True
+        csv_file_path: str,
+        **kwargs
     ) -> pd.DataFrame:
         """
-        Load data by executing SQL from a file.
+        Load data from a CSV file.
 
         Args:
-            sql_file_path: Path to the SQL file to execute.
-            use_in_memory_db: If True, creates an in-memory SQLite database
-                              to execute the SQL (no external DB needed).
+            csv_file_path: Path to the CSV file to load.
+            **kwargs: Additional arguments to pass to pd.read_csv().
 
         Returns:
-            DataFrame containing the fetched data.
+            DataFrame containing the loaded data.
         """
-        if not os.path.exists(sql_file_path):
-            raise FileNotFoundError(f"SQL file not found: {sql_file_path}")
+        if not os.path.exists(csv_file_path):
+            raise FileNotFoundError(f"CSV file not found: {csv_file_path}")
 
-        with open(sql_file_path, 'r', encoding='utf-8') as f:
-            query = f.read()
-
-        if use_in_memory_db:
-            # Create in-memory SQLite database and execute SQL
-            conn = sqlite3.connect(':memory:')
-            cursor = conn.cursor()
-
-            # Execute the SQL file
-            try:
-                cursor.executescript(query)
-            except sqlite3.Error as e:
-                # If executescript fails, try executing as a single query
-                try:
-                    cursor.execute(query)
-                except sqlite3.Error:
-                    pass
-
-            # Find tables and load data
-            cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
-            tables = cursor.fetchall()
-
-            if tables:
-                # Use the first table found
-                table_name = tables[0][0]
-                self.df = pd.read_sql_query(f"SELECT * FROM {table_name}", conn)
-                self.table_name = table_name
-            else:
-                # No tables created, try to execute as SELECT directly
-                try:
-                    self.df = pd.read_sql_query(query, conn)
-                    self.table_name = "query_result"
-                except:
-                    self.df = pd.DataFrame()
-                    self.table_name = "empty_result"
-
-            conn.close()
-        else:
-            # Use external database connection
-            if not self.engine:
-                raise ValueError("Database connection not established. Call connect() first.")
-
-            self.df = pd.read_sql_query(query, self.engine)
-            self.table_name = os.path.splitext(os.path.basename(sql_file_path))[0]
+        self.df = pd.read_csv(csv_file_path, **kwargs)
+        self.table_name = os.path.splitext(os.path.basename(csv_file_path))[0]
 
         self.cleaning_report = {
-            'input_file': sql_file_path,
+            'input_file': csv_file_path,
             'initial_rows': len(self.df),
             'initial_columns': len(self.df.columns),
             'column_names': list(self.df.columns),
             'steps_applied': []
         }
 
-        print(f"Loaded {len(self.df)} rows, {len(self.df.columns)} columns from SQL file")
+        print(f"Loaded {len(self.df)} rows, {len(self.df.columns)} columns from CSV file")
         return self.df
 
     # =========================================================================
     # MISSING VALUE HANDLING
     # =========================================================================
 
-    def handle_missing_values(self, strategy: str = 'auto') -> 'DataCleaner':
+    def handle_missing_values(self, strategy: str = 'auto') -> 'CsvDataCleaner':
         """
         Handle missing values in the dataset.
 
@@ -155,7 +99,7 @@ class DataCleaner:
     # DUPLICATE HANDLING
     # =========================================================================
 
-    def handle_duplicates(self, keep: str = 'first') -> 'DataCleaner':
+    def handle_duplicates(self, keep: str = 'first') -> 'CsvDataCleaner':
         """Remove duplicate rows."""
         if self.df is None:
             raise ValueError("No data loaded.")
@@ -175,7 +119,7 @@ class DataCleaner:
         method: str = 'iqr',
         iqr_multiplier: float = 1.5,
         strategy: str = 'cap'
-    ) -> 'DataCleaner':
+    ) -> 'CsvDataCleaner':
         """
         Handle outliers in numeric columns.
 
@@ -206,7 +150,7 @@ class DataCleaner:
     # STRING CLEANING
     # =========================================================================
 
-    def clean_strings(self) -> 'DataCleaner':
+    def clean_strings(self) -> 'CsvDataCleaner':
         """Clean string columns with common text operations."""
         if self.df is None:
             raise ValueError("No data loaded.")
@@ -230,7 +174,7 @@ class DataCleaner:
     # DATA TYPE CONVERSION
     # =========================================================================
 
-    def convert_dtypes(self) -> 'DataCleaner':
+    def convert_dtypes(self) -> 'CsvDataCleaner':
         """Automatically infer and convert column data types."""
         if self.df is None:
             raise ValueError("No data loaded.")
@@ -243,7 +187,7 @@ class DataCleaner:
     # COLUMN OPERATIONS
     # =========================================================================
 
-    def rename_columns(self) -> 'DataCleaner':
+    def rename_columns(self) -> 'CsvDataCleaner':
         """Rename columns to lowercase with underscores."""
         if self.df is None:
             raise ValueError("No data loaded.")
@@ -258,7 +202,7 @@ class DataCleaner:
         self._log_step('Renamed columns to lowercase with underscores')
         return self
 
-    def drop_constant_columns(self, threshold: float = 0.99) -> 'DataCleaner':
+    def drop_constant_columns(self, threshold: float = 0.01) -> 'CsvDataCleaner':
         """Drop columns with little to no variance."""
         if self.df is None:
             raise ValueError("No data loaded.")
@@ -290,7 +234,7 @@ class DataCleaner:
         handle_outliers: bool = True,
         outlier_method: str = 'iqr',
         outlier_multiplier: float = 1.5
-    ) -> 'DataCleaner':
+    ) -> 'CsvDataCleaner':
         """
         Apply the standard full cleaning pipeline.
 
@@ -320,23 +264,23 @@ class DataCleaner:
         return self
 
     # =========================================================================
-    # SQL EXPORT
+    # CSV EXPORT
     # =========================================================================
 
-    def export_to_sql(
+    def export_to_csv(
         self,
         output_path: Optional[str] = None,
-        chunk_size: int = 1000
+        **kwargs
     ) -> str:
         """
-        Export cleaned data as SQL INSERT statements.
+        Export cleaned data as a CSV file.
 
         Args:
-            output_path: Path for output SQL file. If None, generates timestamp-based name.
-            chunk_size: Number of rows per INSERT statement batch.
+            output_path: Path for output CSV file. If None, generates timestamp-based name.
+            **kwargs: Additional arguments to pass to df.to_csv().
 
         Returns:
-            Path to the output SQL file.
+            Path to the output CSV file.
         """
         if self.df is None:
             raise ValueError("No data to export.")
@@ -344,71 +288,10 @@ class DataCleaner:
         # Generate output filename if not provided
         if output_path is None:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            output_path = f"{self.table_name}_cleaned_{timestamp}.sql"
+            output_path = f"{self.table_name}_cleaned_{timestamp}.csv"
 
-        with open(output_path, 'w', encoding='utf-8') as f:
-            # Write header
-            f.write("-- Cleaned Data Export\n")
-            f.write(f"-- Generated: {datetime.now().isoformat()}\n")
-            f.write(f"-- Source: {self.cleaning_report.get('input_file', 'Unknown')}\n")
-            f.write(f"-- Rows: {len(self.df)}, Columns: {len(self.df.columns)}\n")
-            f.write("--\n\n")
-
-            # Write cleaning report
-            f.write("-- Cleaning Steps Applied:\n")
-            for i, step in enumerate(self.cleaning_report.get('steps_applied', []), 1):
-                f.write(f"-- {i}. {step}\n")
-            f.write("\n")
-
-            # Create table statement
-            f.write(f"-- Create table statement\n")
-            f.write(f"DROP TABLE IF EXISTS `{self.table_name}_cleaned`;\n")
-            f.write(f"CREATE TABLE `{self.table_name}_cleaned` (\n")
-
-            for col in self.df.columns:
-                dtype = self.df[col].dtype
-                if pd.api.types.is_integer_dtype(dtype):
-                    sql_type = "INTEGER"
-                elif pd.api.types.is_float_dtype(dtype):
-                    sql_type = "REAL"
-                elif pd.api.types.is_datetime64_any_dtype(dtype):
-                    sql_type = "DATETIME"
-                else:
-                    sql_type = "TEXT"
-                f.write(f"    `{col}` {sql_type},\n")
-
-            # Remove last comma and close
-            f.seek(f.tell() - 2)
-            f.write("\n);\n\n")
-
-            # Insert statements
-            f.write("-- Insert statements\n")
-
-            for i in range(0, len(self.df), chunk_size):
-                chunk = self.df.iloc[i:i+chunk_size]
-                values_list = []
-
-                for _, row in chunk.iterrows():
-                    values = []
-                    for col in self.df.columns:
-                        val = row[col]
-                        if pd.isna(val):
-                            values.append("NULL")
-                        elif isinstance(val, (int, float)):
-                            values.append(str(val))
-                        elif isinstance(val, datetime):
-                            values.append(f"'{val.isoformat()}'")
-                        else:
-                            # Escape single quotes in strings
-                            escaped = str(val).replace("'", "''")
-                            values.append(f"'{escaped}'")
-                    values_list.append(f"({', '.join(values)})")
-
-                if values_list:
-                    cols = ', '.join([f"`{col}`" for col in self.df.columns])
-                    f.write(f"INSERT INTO `{self.table_name}_cleaned` ({cols}) VALUES\n")
-                    f.write(",\n".join(values_list))
-                    f.write(";\n\n")
+        # Write the DataFrame to CSV
+        self.df.to_csv(output_path, index=False, **kwargs)
 
         print(f"Exported cleaned data to: {output_path}")
         return output_path
