@@ -1,7 +1,10 @@
 /automl_lib
 __init__.py
 /automl_lib/__init__.py
-/__pycache__/
+/__pycache__
 backend/mlpipe/.pytest_cache
 backend/mlpipe/__pycache__
 backend/automl_lib
+backend/mlpipe/test/__pycache__
+backend/mlpipe/test/.pytest_cache
+backend/mlpipe/processed_data.csv
