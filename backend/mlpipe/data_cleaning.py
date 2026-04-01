@@ -62,3 +62,4 @@ df[string_cols] = df[string_cols].fillna('Missing')
 
 df = cap_outliers(df, numeric_cols)
 df.to_csv(input_data, index=False)
+## Just adding for the testing 
