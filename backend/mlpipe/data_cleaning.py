@@ -4,6 +4,7 @@ import re
 from pathlib import Path
 
 input_data = "./datasets/inputFile.csv"
+# output_data = "./datasets/cleanedfile.csv"
 
 def clean_column_names(df):
     """Clean column names: lowercase, spaces to underscores, remove special chars."""
@@ -50,9 +51,9 @@ print(df['patient_id'].dtype)
 
 
 numeric_cols = df.select_dtypes(include=['number']).columns
+df[numeric_cols] = df[numeric_cols].fillna(df[numeric_cols].median())
 
-df[numeric_cols] = df.groupby('dataset')[numeric_cols]\
-                    .transform(lambda x: x.fillna(x.median()))
+
 
 
 string_cols = df.select_dtypes(include=['object', 'str']).columns

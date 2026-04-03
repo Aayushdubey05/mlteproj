@@ -2,7 +2,7 @@ import pandas as pd
 import os 
 import numpy 
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, LabelEncoder
 
 
 input_data = "./datasets/inputFile.csv"
@@ -26,7 +26,7 @@ not_important_cols = [
 
 df = df.drop(columns=not_important_cols, errors='ignore')
 
-target = 'medical_condition'
+target = 'condition'
 
 binary_cols = [
     'diabetes', 'hypertension', 'obesity', 'smoking',
@@ -55,15 +55,12 @@ numeric_cols = [
 
 # Cardinality of the dataset  
 low_card_cat = [
-    'gender', 'admission_type', 'severity',
+    'gender', 'severity',
     'common_in_region', 'language_availability',
-    'blood_type'
 ]
 
 high_card_cat = [
-    'state_name', 'patient_state',
-    'insurance_provider', 'medication',
-    'medication_1', 'condition'
+    'state_name', 'patient_state', 'medication'
 ]
 
 text_cols = ["symptom"]
@@ -112,7 +109,14 @@ def scaling_handler(df):
 
     return df
 
+def condition_label_handler(df):
+    le = LabelEncoder()
+    df['condition'] = le.fit_transform(df['condition'].astype(str))
+    return df
+
+
 df = tf(df)
 df = scaling_handler(df)
+df = condition_label_handler(df)
 
 df.to_csv(output_data, index=False)
