@@ -47,10 +47,9 @@ def data_generalization(df):
 
     # severity mapping
     severity_map = {
-        'low': 1,
+        'mild': 1,
         'moderate': 2,
-        'high': 3,
-        'severe': 4
+        'severe': 3
     }
 
     df['Severity_Num'] = df['Severity'].map(severity_map).fillna(1)
