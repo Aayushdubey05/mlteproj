@@ -1,4 +1,5 @@
 /automl_lib
+/venv
 __init__.py
 /automl_lib/__init__.py
 /__pycache__
