@@ -1,0 +1,301 @@
+Patient_id,age,gender,symptoms,duration_days,severity,disease,temperature,heart_rate,bp,region
+1,53,M,"nausea,dizziness,shortness of breath,chest pain,Fatigue",1,3,Heart Disease,97.6,95,142/88,West
+2,42,M,"fever,fatigue",6,3,Flu,101.4,94,112/85,South
+3,72,,"chills,shortness of breath,dizziness,Chest pain",4,5,Heart Disease,99.8,92,137/82,West
+4,66,M,"blurred vision,dizziness,fatigue,nausea",5,2,Diabetes,99.0,86,132/79,
+5,61,F,"STIFFNESS,fatigue",9,4,Arthritis,97.7,83,140/87,South
+6,34,M,"headache,Fever,cough",9,4,Flu,100.0,78,126/79,North
+7,37,M,"FATIGUE,cough,chills,headache",4,3,Flu,101.3,75,123/86,South
+8,18,,"runny nose,cough, sore throat ,HEADACHE",10,7,Cold,100.4,94,115/73,West
+9,18,Other,"runny nose, fatigue ,sore throat",5,3,Cold,100.3,68,104/82,South
+10,59,F,"CHEST PAIN,fatigue",3,4,Heart Disease,99.2,88,141/86,South
+11,37,M,"sore throat, fatigue ",3,2,Flu,,98,120/75,North
+12,35,M,"headache,dizziness",5,5,Migraine,108.0,70,109/85,North
+13,55,M,"sore throat,HEADACHE,cough,runny nose",7,3,Cold,99.9,86,119/71,East
+14,64,Other,"dizziness, nausea , blurred vision ,FATIGUE",4,4,Diabetes,,83,137/85,North
+15,57,M,"shortness of breath,fatigue,chest pain,dizziness",8,3,Heart Disease,99.4,92,136/93,South
+16,41,,"sore throat,fatigue,cough,JOINT PAIN",6,3,Flu,99.9,92,122/79,West
+17,80,F,"shortness of breath, stiffness ,chest pain,dizziness",7,4,Heart Disease,97.2,115,141/83,
+18,36,M,"fever,fatigue,sore throat,chills",7,4,Flu,101.1,97,122/71,North
+19,51,M,"nausea,dizziness,fatigue",8,4,Diabetes,97.8,78,142-87,South
+20,60,F,"dizziness,fatigue,nausea,joint pain",2,3,Diabetes,98.8,86,137/88,North
+21,58,F,"shortness of breath,fatigue",5,3,Heart Disease,97.5,86,144/96,West
+22,56,F," blurred vision ,fatigue",5,2,Diabetes,98.9,77,133/87,North
+23,54,M,"Joint pain, fatigue ,stiffness",8,2,Arthritis,99.0,89,135/77,South
+24,47,F,"dizziness,NAUSEA, headache ,fever",10,2,Migraine,97.9,89,127/81,North
+25,66,M,"blurred vision,nausea,dizziness",7,2,Diabetes,98.3,81,125/80,West
+26,-5,M,"cough, dizziness ,nausea",5,4,Migraine,98.5,69,125/73,East
+27,75,M,"fatigue,joint pain,stiffness",6,4,Arthritis,99.7,70,132/80,East
+28,46,F,"dizziness,nausea,HEADACHE",6,5,Migraine,99.8,200,121/75,North
+29,32,M," cough ,HEADACHE,runny nose",10,2,Cold,100.0,73,121/81,East
+30,67,M,"STIFFNESS,joint pain,dizziness,FATIGUE",1,4,Arthritis,98.0,79,133/87,South
+31,71,F,"dizziness,nausea,blurred vision,fatigue",5,3,Diabetes,100.0,97,116/87,East
+32,38,M,"chest pain, sore throat ,CHILLS,fatigue,cough",5,2,Flu,99.5,78,126/86,West
+33,52,F,"blurred vision,fatigue,joint pain,dizziness",1,2,Diabetes,99.6,76,111/83,South
+34,54,M,"nausea,FEVER,chills",30,4,Flu,98.8,91,,East
+35,50,M,"fatigue,dizziness,BLURRED VISION,NAUSEA",10,2,Diabetes,98.7,89,142/74,South
+36,40,M,"chest pain,runny nose,SORE THROAT",2,1,Cold,99.0,95,114/78,North
+37,80,M,"blurred vision,joint pain,stiffness,fatigue",10,4,Arthritis,99.1,60,127/80,West
+38,53,M," cough ,sore throat,shortness of breath,Fatigue",7,3,Flu,100.1,78,131/74,North
+39,38,M,"SORE THROAT,fever",4,4,Flu,,102,116/84,West
+40,38,F,"sore throat,cough,runny nose",5,1,Cold,100.1,81,129/78,South
+41,24,F,"COUGH,sore throat,chills,Fatigue",1,2,Flu,98.8,77,121/84,North
+42,55,M,"headache,COUGH",-1,2,Cold,99.7,77,119-78,West
+43,32,F,"cough,shortness of breath,headache,runny nose",3,2,Cold,99.3,67,131-84,South
+44,44,F,"fatigue,nausea",8,2,Diabetes,98.5,81,138/85,South
+45,31,M,"dizziness,NAUSEA,headache",4,4,Migraine,98.3,77,115/80,North
+46,47,F,"COUGH,Sore throat,nausea",1,3,Cold,98.9,84,109-73,West
+47,57,Other,"fever,CHILLS, fatigue ,joint pain,COUGH",10,3,Flu,99.6,101,135-72,West
+48,26,M,"Sore throat,fatigue,CHILLS",6,3,Flu,99.9,85,126/74,South
+49,53,M,"Nausea,fatigue,dizziness,BLURRED VISION",7,4,Diabetes,97.5,95,137/86,South
+50,80,F,"cough,DIZZINESS,chest pain,shortness of breath, fatigue ",10,4,Heart Disease,97.3,107,141/90,South
+51,79,M,"chest pain,shortness of breath",8,5,Heart Disease,97.3,107,151/84,West
+52,74,F," nausea ,blurred vision, dizziness ,fatigue",9,2,Diabetes,98.8,79,135/76,East
+53,18,F,"nausea,headache,dizziness",5,5,Migraine,,66,125/86,East
+54,80,M,"Fatigue,dizziness,chest pain, blurred vision ,shortness of breath",3,5,Heart Disease,97.6,99,122/100,East
+55,46,F,"chills,sore throat,fever",10,3,Flu,,91,138/70,East
+56,57,F,"fatigue,NAUSEA",9,4,Diabetes,98.9,88,142/86,North
+57,80,F,"stiffness,fatigue, chills ",10,3,Arthritis,97.2,63,125/85,West
+58,22,Other,"dizziness,headache,nausea",5,3,Migraine,98.0,74,130/87,East
+59,61,M,"chills,cough,runny nose",4,3,Cold,99.4,88,121-76,West
+60,21,M,"sore throat,fever,CHILLS,fatigue",9,2,Flu,101.2,25,114/66,East
+61,62,F,"COUGH,sore throat,Stiffness,headache",4,3,Cold,100.1,86,123-80,West
+62,80,M,"chest pain,fatigue,dizziness,shortness of breath",5,5,Heart Disease,98.9,89,150/101,South
+63,68,M,"dizziness,chills,fatigue,chest pain,SHORTNESS OF BREATH",3,4,Heart Disease,99.1,85,144/82,North
+64,54,F,"fatigue,joint pain,stiffness",9,3,Arthritis,98.3,67,131/90,West
+65,36,M," cough ,SORE THROAT,runny nose,headache,nausea",1,2,Cold,100.3,89,111/81,North
+66,72,F,"Blurred vision, nausea ,dizziness",4,3,Diabetes,98.5,83,126/81,West
+67,26,F,"dizziness,headache",6,2,Migraine,99.3,89,130/82,West
+68,61,F,"nausea,BLURRED VISION",4,2,Diabetes,98.8,74,135/93,East
+69,75,M,"chest pain,dizziness",2,7,Heart Disease,99.6,107,145/90,West
+70,45,M,"dizziness,shortness of breath, fatigue ,chest pain",5,4,Heart Disease,,115,136/92,North
+71,49,,"cough,fever",2,2,Flu,100.7,83,125/68,South
+72,57,F,"blurred vision,dizziness,FATIGUE",7,2,Diabetes,100.0,94,139/82,South
+73,78,F,"HEADACHE,chest pain,dizziness,shortness of breath,FATIGUE",2,4,Heart Disease,97.4,102,142/84,South
+74,52,M,"Fatigue,nausea",6,2,Diabetes,99.0,74,139/87,South
+75,40,Other,"cough, headache ,runny nose, dizziness ",-1,3,Cold,101.1,92,117/77,West
+76,33,M,"HEADACHE, dizziness ,nausea",3,2,Migraine,99.0,75,108/78,South
+77,52,F,"sore throat,nausea,headache,cough",6,2,Cold,98.8,87,106/80,East
+78,66,M,"fatigue, nausea ,blurred vision,dizziness",2,4,Diabetes,98.5,97,139/91,East
+79,35,F,"headache,SHORTNESS OF BREATH,nausea, dizziness ",9,3,Migraine,97.5,79,120/74,West
+80,57,M,"cough,BLURRED VISION,RUNNY NOSE,headache,sore throat",6,1,Cold,99.3,88,108/74,West
+81,29,F,"nausea,headache,dizziness",10,4,Migraine,98.8,81,112/80,South
+82,56,M,"chest pain,dizziness,SHORTNESS OF BREATH,fatigue",5,4,Heart Disease,98.8,112,154/92,West
+83,54,F,"NAUSEA,dizziness",30,5,Migraine,98.4,94,118/79,South
+84,62,M,"chills,headache,FEVER",6,3,Flu,99.3,100,113/79,North
+85,35,F,"DIZZINESS,NAUSEA",2,3,Diabetes,99.5,90,148/79,East
+86,57,M,"chills,sore throat,shortness of breath",6,4,Flu,99.1,99,108/71,West
+87,80,F,"dizziness,blurred vision,chest pain, fatigue , nausea ",7,4,Diabetes,99.3,30,130/89,East
+88,29,F,"blurred vision,CHILLS,fatigue, sore throat ",3,2,Flu,98.9,75,108/85,North
+89,63,F,"dizziness,blurred vision,runny nose,FATIGUE",8,3,Diabetes,97.1,88,131/90,South
+90,69,M,"dizziness,stiffness,shortness of breath,FATIGUE,Chest pain",1,5,Heart Disease,98.5,103,134/87,East
+91,45,M," cough ,runny nose,blurred vision,sore throat",4,2,Cold,99.1,91,114/66,West
+92,57,Other,"fatigue,nausea,HEADACHE,blurred vision",6,4,Diabetes,99.9,72,116-81,South
+93,74,M,"fatigue,headache,stiffness,joint pain",2,2,Arthritis,99.5,85,,East
+94,72,M,"blurred vision,fatigue",1,3,Diabetes,100.1,73,128/86,East
+95,51,F,"joint pain, fatigue ,stiffness",8,2,Arthritis,97.8,76,133/78,East
+96,26,F,"fatigue,SORE THROAT",3,3,Flu,100.5,105,130/82,East
+97,58,,"shortness of breath,DIZZINESS,chest pain, fatigue ",6,3,Heart Disease,99.3,85,133/89,
+98,44,M,"Runny nose,COUGH,nausea,sore throat, headache ",2,1,Cold,101.3,78,116/64,West
+99,76,M," joint pain ,FATIGUE, chest pain ,Dizziness",2,3,Heart Disease,98.6,87,143/93,West
+100,31,M,"runny nose,headache,sore throat,cough",4,1,Cold,98.7,81,105/82,South
+101,24,M,"nausea,dizziness,headache",5,2,Migraine,98.7,78,126/79,East
+102,43,M,"NAUSEA,dizziness,blurred vision",4,5,Migraine,97.2,74,115/75,East
+103,41,F,"sore throat,cough,headache,runny nose",30,1,Cold,100.0,87,128/79,South
+104,46,F,"headache,cough,joint pain,Sore throat",7,-1,Cold,108.0,84,119/83,South
+105,75,,"blurred vision,nausea,dizziness,Fatigue",5,4,Diabetes,99.5,89,114/89,West
+106,69,F,"shortness of breath,dizziness,chest pain,fatigue",3,4,Heart Disease,97.8,98,146/96,North
+107,45,M,"blurred vision,fatigue",8,4,Diabetes,98.1,80,,South
+108,55,M,"DIZZINESS, nausea ,blurred vision",1,4,Diabetes,99.0,92,125-81,
+109,74,M," fatigue ,stiffness,JOINT PAIN",1,2,Arthritis,99.5,80,128/80,North
+110,72,M,"fatigue,shortness of breath",9,5,Heart Disease,99.8,104,138/95,South
+111,48,F,"sore throat,COUGH,nausea,runny nose,headache",8,2,Cold,,91,,East
+112,23,M,"sore throat,HEADACHE,joint pain",3,2,Cold,99.8,90,106/65,North
+113,65,M,"headache,runny nose,cough",8,2,Cold,,92,115/79,West
+114,67,M,"fatigue,shortness of breath,Chest pain,dizziness",9,4,Heart Disease,,99,149/91,North
+115,40,,"fatigue,chills",6,2,Flu,99.6,94,117/78,East
+116,56,M,"BLURRED VISION,joint pain,nausea,dizziness,fatigue",8,4,Diabetes,98.6,71,143/84,North
+117,45,F,"runny nose,SORE THROAT",7,3,Cold,100.2,88,110/76,South
+118,56,F,"joint pain,FATIGUE,STIFFNESS",1,2,Arthritis,97.5,85,120/84,South
+119,74,F,"chest pain,SHORTNESS OF BREATH,fatigue",4,4,Heart Disease,99.2,109,132/96,South
+120,70,F,"STIFFNESS,joint pain,sore throat",10,3,Arthritis,98.2,70,126/87,North
+121,36,Other,"runny nose,cough,headache,sore throat",2,3,Cold,,81,128/70,East
+122,41,F,"fatigue,blurred vision,dizziness, nausea ",8,2,Diabetes,,95,125/89,East
+123,20,F,"sore throat,cough,CHILLS, fever , dizziness ",7,4,Flu,99.5,105,111-70,West
+124,44,F," dizziness , nausea ",5,2,Diabetes,97.3,87,121/79,East
+125,31,,"runny nose, sore throat ",10,2,Cold,99.5,87,113/78,East
+126,63,F,"dizziness,shortness of breath",9,5,Heart Disease,108.0,102,144/97,East
+127,47,F," sore throat ,cough,RUNNY NOSE,fever,CHILLS",4,3,Flu,108.0,78,116/76,North
+128,61,F," fatigue ,DIZZINESS,nausea",4,2,Diabetes,97.5,95,140/85,North
+129,26,F,"fever,cough,CHEST PAIN",5,2,Flu,101.2,101,123/75,West
+130,41,M,"FATIGUE,blurred vision,dizziness,nausea",1,4,Diabetes,98.2,86,137/90,North
+131,44,M,"sore throat,runny nose, cough ,headache",7,1,Cold,99.4,83,116/77,East
+132,68,F,"FATIGUE,blurred vision,dizziness",9,4,Diabetes,105.5,96,125/76,North
+133,80,F,"fatigue,chills,chest pain,dizziness,shortness of breath",2,4,Heart Disease,98.9,108,146/96,South
+134,55,M,"dizziness,blurred vision",10,3,Diabetes,99.4,100,128/86,South
+135,62,F,"joint pain,shortness of breath,Dizziness,chest pain,fatigue",4,3,Heart Disease,97.9,111,127/84,North
+136,63,M,"dizziness,runny nose,chest pain,fatigue,shortness of breath",3,3,Heart Disease,90.1,97,147/93,East
+137,57,M,"sore throat,runny nose,cough",9,2,Cold,100.8,65,131/79,North
+138,24,F,"headache,dizziness,runny nose",10,3,Cold,101.5,75,114/78,South
+139,49,F,"headache,sore throat,dizziness",8,4,Migraine,98.5,30,113/78,West
+140,43,M,"SORE THROAT,nausea,blurred vision,fatigue,dizziness",9,4,Diabetes,99.2,89,141/84,North
+141,49,M,"sore throat,runny nose",8,2,Cold,101.0,71,117/75,East
+142,60,F,"Chills,sore throat,cough,Fatigue",10,7,Flu,98.7,84,107-69,West
+143,55,M,"sore throat, cough ",5,1,Cold,99.3,79,118/75,West
+144,42,F,"runny nose, fever ,Headache,COUGH,sore throat",1,3,Cold,100.4,67,128/63,North
+145,37,F,"chest pain,fever,cough,fatigue",10,3,Flu,101.2,102,,East
+146,60,F,"nausea,dizziness,headache",7,5,Migraine,97.9,75,108/73,West
+147,27,F,"fatigue, chills ,fever",2,4,Flu,101.4,86,,North
+148,80,F,"fatigue,shortness of breath,nausea",9,3,Heart Disease,99.1,98,142/100,West
+149,65,F,"stiffness,blurred vision,joint pain,fatigue",30,-1,Arthritis,98.0,90,141-74,South
+150,57,M,"cough,sore throat,runny nose",2,10,Cold,,66,124/78,North
+151,77,M,"Chest pain,dizziness,STIFFNESS,SHORTNESS OF BREATH,fatigue",1,4,Heart Disease,99.4,89,152/94,South
+152,43,M,"cough,fatigue,chills,sore throat,SHORTNESS OF BREATH",1,2,Flu,100.9,78,123/74,East
+153,41,M,"Blurred vision,FATIGUE, nausea ,dizziness",5,4,Diabetes,,91,124/74,South
+154,70,F,"joint pain,fatigue",1,4,Arthritis,108.0,71,132/80,North
+155,59,F,"stiffness,fatigue",7,4,Arthritis,97.7,77,121/87,South
+156,68,F,"dizziness,shortness of breath",7,4,Heart Disease,99.8,93,129/89,South
+157,44,M," blurred vision , nausea ,dizziness,fatigue",5,2,Diabetes,99.4,99,144/87,North
+158,64,F,"nausea,DIZZINESS,blurred vision,fatigue",1,3,Diabetes,99.6,83,130/94,North
+159,54,M,"DIZZINESS,chills,sore throat,COUGH",7,4,Flu,100.3,80,109/71,
+160,50,M,"runny nose,cough",9,3,Cold,100.4,78,105/85,South
+161,23,,"fatigue, cough ,chills",10,4,Flu,99.1,93,,East
+162,39,M,"joint pain,SORE THROAT,headache,cough",2,3,Cold,100.7,92,113/81,West
+163,48,M,"dizziness,nausea",7,3,Diabetes,97.1,79,,East
+164,58,F,"shortness of breath,chest pain,dizziness",8,4,Heart Disease,98.1,98,,East
+165,37,F,"fatigue,blurred vision,nausea",7,2,Diabetes,99.2,71,128/88,North
+166,21,M,"sore throat,COUGH,headache",9,1,Cold,,77,107/77,North
+167,18,M,"Sore throat, runny nose ,HEADACHE,dizziness,cough",2,2,Cold,101.4,83,125/70,North
+168,18,F,"COUGH,chills,fatigue,SORE THROAT",5,4,Flu,101.4,103,117/80,
+169,67,F,"fatigue,nausea,dizziness,blurred vision",10,2,Diabetes,98.1,88,138/79,West
+170,65,M,"sore throat,FATIGUE, fever ,CHILLS",10,4,Flu,100.6,84,112/79,East
+171,73,F,"FATIGUE,Joint pain,BLURRED VISION,stiffness",10,3,Arthritis,98.4,65,131/84,South
+172,18,F,"fever,cough",10,4,Flu,100.3,86,118/83,East
+173,30,F," cough ,sore throat,fatigue,fever",9,3,Flu,88.5,91,123/80,
+174,62,M,"Stiffness,FATIGUE",9,3,Arthritis,97.9,83,130/88,South
+175,64,M,"blurred vision,nausea",3,4,Diabetes,,78,129/89,South
+176,52,M,"SORE THROAT,headache,runny nose",7,3,Cold,99.4,85,123/78,South
+177,18,,"runny nose,Cough",0,1,Cold,101.1,85,119/71,South
+178,34,M,"cough,dizziness,Nausea,headache",3,5,Migraine,98.3,68,130/77,North
+179,200,F,"dizziness,sore throat,fatigue",7,4,Flu,88.5,78,121-80,North
+180,36,M,"Runny nose,sore throat,DIZZINESS",6,3,Cold,90.1,80,122/78,
+181,35,F,"runny nose,SORE THROAT,cough,headache",4,7,Cold,101.1,84,104/79,South
+182,48,F," headache ,cough, sore throat , runny nose ",10,1,Cold,99.7,93,,North
+183,72,F,"chest pain,FATIGUE, shortness of breath ,dizziness",2,4,Heart Disease,,92,142/99,South
+184,28,Other,"cough,Runny nose,headache",6,7,Cold,99.1,80,119/81,East
+185,30,M,"blurred vision,SORE THROAT,cough",8,3,Flu,100.5,81,,East
+186,56,M,"COUGH,fatigue,chills",4,3,Flu,100.8,85,122/71,
+187,63,F,"Dizziness,fever,FATIGUE,blurred vision,nausea",8,4,Diabetes,98.5,92,141-94,West
+188,37,F,"nausea,dizziness,headache",1,4,Migraine,,76,124/75,North
+189,74,M,"chest pain,dizziness,shortness of breath,sore throat",8,5,Heart Disease,99.9,113,137/90,South
+190,43,F,"Blurred vision,NAUSEA",4,4,Diabetes,98.1,80,143/91,East
+191,36,F,"fatigue,Cough,nausea",3,0,Flu,99.9,81,,East
+192,46,M,"cough,Sore throat,stiffness,chills",10,4,Flu,99.6,90,120/74,West
+193,34,F,"runny nose,sore throat,cough",10,1,Cold,99.0,76,,East
+194,72,F,"STIFFNESS,joint pain,FATIGUE",4,4,Arthritis,,90,121/83,South
+195,46,,"COUGH,CHILLS,Fatigue",8,4,Flu,100.1,220,121/85,East
+196,63,M,"FATIGUE,blurred vision,joint pain,dizziness",1,4,Diabetes,,76,132/83,East
+197,39,M,"runny nose,sore throat",2,3,Cold,101.3,91,118/76,South
+198,76,F," stiffness ,joint pain,FATIGUE",4,2,Arthritis,,82,123/82,
+199,64,M," dizziness ,fatigue,CHEST PAIN",5,4,Heart Disease,99.4,101,138/89,North
+200,47,M,"joint pain,stiffness,fatigue",9,2,Arthritis,98.5,75,126/76,West
+201,63,Other,"NAUSEA,blurred vision,fatigue",7,4,Diabetes,98.3,73,117/84,West
+202,55,F,"sore throat,COUGH,fatigue",2,3,Flu,98.7,101,117/77,North
+203,76,F,"dizziness,FATIGUE,shortness of breath",2,4,Heart Disease,97.2,106,140/95,North
+204,76,F,"dizziness,NAUSEA,BLURRED VISION",6,4,Diabetes,99.0,83,122/80,North
+205,48,F,"Stiffness,fatigue",45,3,Arthritis,97.4,82,134/83,South
+206,40,,"blurred vision,fatigue,NAUSEA,dizziness",9,3,Diabetes,98.3,86,115/84,West
+207,60,M,"runny nose,sore throat,headache",2,2,Cold,99.1,72,104/70,West
+208,21,M,"COUGH,sore throat,runny nose",5,2,Cold,101.3,91,119/82,East
+209,42,M,"nausea,fatigue,BLURRED VISION,cough,dizziness",2,3,Diabetes,97.9,74,119/81,
+210,58,Other,"stiffness,fatigue,joint pain",5,2,Arthritis,97.6,70,122/78,West
+211,80,F,"fatigue,DIZZINESS,SHORTNESS OF BREATH",3,5,Heart Disease,99.0,87,144/98,South
+212,60,M,"SORE THROAT,HEADACHE",9,3,Cold,100.0,92,unknown,North
+213,59,F,"fever,cough, sore throat , fatigue ",5,2,Flu,99.0,83,118-80,East
+214,66,F,"STIFFNESS,joint pain,fatigue,nausea",6,-1,Arthritis,98.6,88,137/77,
+215,41,F,"STIFFNESS, cough ,FATIGUE,Fever,chills",7,0,Flu,100.3,78,114/70,South
+216,79,M,"dizziness,shortness of breath",0,4,Heart Disease,97.4,85,149/97,North
+217,80,F,"Fatigue, chest pain ,fever,dizziness,SHORTNESS OF BREATH",4,4,Heart Disease,99.1,100,148/89,South
+218,69,M,"FATIGUE,dizziness,nausea",4,4,Diabetes,99.0,79,134/76,South
+219,49,F,"nausea,dizziness,BLURRED VISION,fatigue",8,2,Diabetes,,83,142/93,South
+220,26,F,"sore throat,chills,fever",10,3,Flu,99.7,97,106/69,South
+221,43,M,"DIZZINESS, nausea , stiffness ,headache",8,5,Migraine,98.8,66,131/91,East
+222,53,F,"Fever,cough,chills,FATIGUE",10,3,Flu,99.1,90,125/84,West
+223,43,F," headache ,fever,fatigue,sore throat,chills",4,2,Flu,99.4,80,103/81,South
+224,62,F,"joint pain,fatigue,dizziness",2,2,Diabetes,97.5,81,140/86,South
+225,39,M,"fatigue,chills, chest pain ,sore throat",7,2,Flu,99.8,102,114/69,North
+226,45,M,"cough,fever",9,4,Flu,98.6,91,126/79,West
+227,80,M,"fatigue, shortness of breath ,DIZZINESS,chest pain,chills",4,4,Heart Disease,97.4,96,124/90,West
+228,35,F,"SORE THROAT,headache,cough,RUNNY NOSE,BLURRED VISION",3,2,Cold,99.8,89,133/76,West
+229,28,Other,"headache,nausea,dizziness",10,2,Migraine,97.2,76,129/69,North
+230,63,F,"fatigue,fever,stiffness",7,4,Arthritis,97.5,84,120/88,North
+231,71,F,"stiffness,joint pain,fatigue",10,3,Arthritis,,81,116/78,West
+232,57,,"fatigue,SORE THROAT,fever",9,2,Flu,99.1,96,115/65,South
+233,41,M,"sore throat,runny nose",2,2,Cold,100.1,72,,North
+234,52,M,"fever,sore throat,CHILLS,cough",10,10,Flu,99.4,86,125/68,East
+235,24,F,"chills,fatigue",8,4,Flu,100.0,75,119/80,West
+236,73,F,"dizziness,fatigue",10,2,Diabetes,100.1,81,117/88,North
+237,41,M,"dizziness,headache,nausea,runny nose",10,3,Migraine,97.3,83,119/77,West
+238,41,F,"fatigue,CHILLS,fever",1,3,Flu,99.8,103,,West
+239,56,F,"stiffness,joint pain",6,2,Arthritis,98.1,70,129/84,North
+240,49,M,"JOINT PAIN,stiffness,blurred vision",5,3,Arthritis,97.8,81,135/77,North
+241,57,,"fatigue,blurred vision, dizziness ,NAUSEA",1,3,Diabetes,99.1,88,129/88,North
+242,40,F,"blurred vision,nausea,chest pain",8,3,Diabetes,98.1,80,126/77,West
+243,60,M,"BLURRED VISION,DIZZINESS,FATIGUE,Nausea",4,7,Diabetes,98.0,78,134-78,North
+244,33,M,"sore throat,fatigue,dizziness",7,2,Flu,99.0,92,132/72,East
+245,42,F," headache ,dizziness,nausea",9,5,Migraine,98.7,95,137/71,South
+246,45,F," runny nose ,NAUSEA,headache,cough",8,2,Cold,88.5,72,109/84,East
+247,44,,"stiffness,joint pain",5,4,Arthritis,99.4,89,128/87,North
+248,66,F,"nausea,fatigue",2,2,Diabetes,98.4,97,132/79,East
+249,52,F,"runny nose, cough ,headache,sore throat",4,2,Cold,101.3,68,113-68,East
+250,33,M,"fever,CHILLS,sore throat",4,2,Flu,100.6,93,130-76,North
+251,40,M,"headache,nausea,Dizziness",10,3,Migraine,99.0,77,126/79,East
+252,58,,"headache,DIZZINESS,NAUSEA",6,3,Migraine,98.5,87,127-79,South
+253,57,F," runny nose ,SORE THROAT,headache, cough ",1,1,Cold,100.7,82,134/83,East
+254,18,F,"runny nose,FEVER,cough,SORE THROAT",3,1,Cold,99.6,71,123/67,South
+255,-5,M,"chills,FEVER,fatigue,chest pain",10,2,Flu,100.7,99,130/81,West
+256,27,F,"RUNNY NOSE,sore throat,Headache",3,10,Cold,99.6,85,,West
+257,54,M,"fatigue,chest pain",6,10,Heart Disease,,91,130/84,South
+258,31,F,"Sore throat,cough",4,3,Flu,99.8,89,117/80,North
+259,80,F,"DIZZINESS,FATIGUE,shortness of breath",3,0,Heart Disease,99.9,108,158/88,North
+260,54,M," sore throat ,RUNNY NOSE,headache,cough",1,3,Cold,101.4,72,103/65,West
+261,75,M,"fatigue,dizziness,shortness of breath",2,5,Heart Disease,97.5,114,unknown,West
+262,61,F,"fatigue,nausea",3,4,Diabetes,97.9,83,133/76,East
+263,21,M,"FEVER,fatigue",1,4,Flu,101.4,85,120/77,North
+264,200,F,"joint pain,fatigue",4,4,Arthritis,98.6,60,118/80,West
+265,56,M,"sore throat,fever,cough",-1,2,Flu,100.2,80,132/75,North
+266,19,M,"fatigue,cough,sore throat",8,4,Flu,100.3,77,132/81,North
+267,40,M,"sore throat,cough,blurred vision,fever",9,4,Flu,100.2,79,122/81,North
+268,52,F,"fatigue,BLURRED VISION,dizziness, shortness of breath ,nausea",7,4,Diabetes,97.2,83,134/80,South
+269,74,F,"shortness of breath,fatigue",3,5,Heart Disease,98.2,88,136/103,North
+270,48,F,"headache,sore throat, nausea ,cough",2,3,Cold,105.5,67,121/72,East
+271,53,F,"dizziness,shortness of breath,blurred vision,chest pain",2,5,Heart Disease,99.1,91,144/85,North
+272,55,M,"fever, chills ",1,2,Flu,100.9,89,126/85,North
+273,53,F,"Shortness of breath,fatigue",7,4,Heart Disease,97.6,115,141/87,South
+274,68,Other,"COUGH,chest pain,fatigue,dizziness",5,3,Heart Disease,100.0,115,141/98,East
+275,80,F,"fatigue,SHORTNESS OF BREATH,RUNNY NOSE",9,5,Heart Disease,99.3,108,146/100,West
+276,60,F,"dizziness,nausea",2,2,Diabetes,97.6,93,123/81,North
+277,25,F,"runny nose,cough",9,1,Cold,100.1,78,111/87,North
+278,52,,"SORE THROAT,cough,Headache,RUNNY NOSE",6,1,Cold,,78,118/70,
+279,60,M," fatigue ,chest pain",30,3,Heart Disease,,97,126/93,North
+280,63,M," cough ,runny nose,headache",4,2,Cold,98.6,74,124/73,North
+281,43,F," headache ,DIZZINESS,NAUSEA",4,-1,Migraine,97.3,74,122-87,North
+282,41,M,"chills,headache,COUGH, runny nose ",8,2,Cold,100.6,69,127/80,South
+283,38,M,"blurred vision, dizziness ,fatigue,NAUSEA, chills ",9,4,Diabetes,98.4,99,142/72,South
+284,50,F,"headache,Runny nose, cough , stiffness ",4,1,Cold,100.0,81,115/72,
+285,19,M,"chills,cough",6,4,Flu,99.0,84,,East
+286,35,,"fever, chills ,Cough,fatigue",7,2,Flu,99.0,90,111/82,
+287,36,M,"sore throat,fatigue,cough",7,2,Flu,100.5,82,139/65,East
+288,26,F,"DIZZINESS,nausea",9,2,Migraine,98.6,30,,South
+289,38,F,"RUNNY NOSE,sore throat,dizziness,cough,headache",3,2,Cold,99.1,74,109/84,North
+290,28,F,"NAUSEA,headache, dizziness ",7,5,Migraine,98.3,75,124/88,South
+291,63,F,"fatigue,headache,cough",1,2,Cold,101.1,69,118-69,South
+292,27,F,"RUNNY NOSE,HEADACHE",4,3,Cold,100.9,69,122/74,North
+293,23,,"sore throat,cough,shortness of breath",9,1,Cold,101.5,95,106/71,North
+294,59,F,"Nausea,HEADACHE",6,0,Migraine,97.4,65,128/71,North
+295,61,M,"blurred vision,shortness of breath,dizziness,fatigue",-1,3,Diabetes,98.0,84,123/76,East
+296,31,F,"cough,headache,blurred vision",2,1,Cold,101.2,93,113/81,East
+297,22,Other,"HEADACHE,runny nose,cough",10,1,Cold,100.5,67,107-82,North
+298,28,F,"sore throat,chills",8,2,Flu,101.4,81,,West
+299,46,,"sore throat,cough",7,3,Flu,99.2,75,116/71,North
+300,54,M,"sore throat,fatigue,cough",3,2,Cold,90.1,67,112-78,South

@@ -18,7 +18,7 @@ def generate_patient(disease):
     probs = matrix.loc[disease].values
     probs = probs / probs.sum()  # ensure valid distribution
 
-    chosen = np.random.choice(symptoms, size=5, p=probs)
+    chosen = np.random.choice(symptoms, size=3, p=probs)
 
     row = {}
     for sym in symptoms:
@@ -61,7 +61,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 model = XGBClassifier(
-    n_estimators=200,
+    n_estimators=50,
     max_depth=6,
     learning_rate=0.1,
     objective="multi:softprob",

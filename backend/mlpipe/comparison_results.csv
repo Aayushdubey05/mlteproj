@@ -1,0 +1,27 @@
+Group,Method,Model,Accuracy,Precision,Recall,F1
+Group 1,Baseline,Logistic Regression,0.205,0.1816,0.205,0.1862
+Group 1,Baseline,Random Forest,0.23,0.2428,0.23,0.2321
+Group 2,MV_impute,Logistic Regression,0.205,0.1816,0.205,0.1862
+Group 2,MV_impute,Random Forest,0.23,0.2428,0.23,0.2321
+Group 2,MV_drop,Logistic Regression,0.205,0.1816,0.205,0.1862
+Group 2,MV_drop,Random Forest,0.23,0.2428,0.23,0.2321
+Group 3,OL_iqr_cap,Logistic Regression,0.2,0.1682,0.2,0.177
+Group 3,OL_iqr_cap,Random Forest,0.21,0.2133,0.21,0.2083
+Group 3,OL_iqr_remove,Logistic Regression,0.2081,0.2354,0.2081,0.1952
+Group 3,OL_iqr_remove,Random Forest,0.1777,0.1752,0.1777,0.1738
+Group 3,OL_zscore,Logistic Regression,0.2132,0.2052,0.2132,0.1942
+Group 3,OL_zscore,Random Forest,0.1726,0.1709,0.1726,0.1696
+Group 4,Scale_none,Logistic Regression,0.205,0.1816,0.205,0.1862
+Group 4,Scale_none,Random Forest,0.23,0.2428,0.23,0.2321
+Group 4,Scale_standard,Logistic Regression,0.2,0.1992,0.2,0.1908
+Group 4,Scale_standard,Random Forest,0.22,0.23,0.22,0.2222
+Group 4,Scale_minmax,Logistic Regression,0.19,0.1903,0.19,0.1795
+Group 4,Scale_minmax,Random Forest,0.22,0.2322,0.22,0.2235
+Group 5,FeatEng,Logistic Regression,0.18,0.178,0.18,0.1753
+Group 5,FeatEng,Random Forest,0.2,0.2013,0.2,0.1968
+Group 6,FS_correlation,Logistic Regression,0.19,0.1894,0.19,0.1853
+Group 6,FS_correlation,Random Forest,0.195,0.1971,0.195,0.1934
+Group 6,FS_chi2,Logistic Regression,0.2,0.1814,0.2,0.1828
+Group 6,FS_chi2,Random Forest,0.195,0.1934,0.195,0.1935
+Group 6,FS_mutual_info,Logistic Regression,0.17,0.1489,0.17,0.1523
+Group 6,FS_mutual_info,Random Forest,0.195,0.1937,0.195,0.1924
