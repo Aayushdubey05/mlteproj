@@ -127,7 +127,6 @@ def load_data(path: str = "medical_dataset.csv") -> pd.DataFrame:
         print(f"[Load] '{path}' loaded — {df.shape[0]} rows, {df.shape[1]} cols")
     except FileNotFoundError:
         print(f"[Load] '{path}' not found. Generating synthetic dataset …")
-        df = generate_dataset(save_path=path)
     return df
 
 
@@ -146,10 +145,24 @@ def basic_clean(df: pd.DataFrame) -> pd.DataFrame:
     if "Patient_id" in df.columns:
         df.drop(columns=["Patient_id"], inplace=True)
 
-    # Lowercase string columns for consistency
-    for col in ["gender", "region", "disease"]:
-        if col in df.columns:
-            df[col] = df[col].str.strip().str.lower()
+    # # Lowercase string columns for consistency
+    # for col in ["gender", "region", "disease"]:
+    #     if col in df.columns:
+    #         df[col] = df[col].str.strip().str.lower()
+
+    # Normalize ALL string garbage → NaN
+    for col in df.select_dtypes(include="object").columns:
+        df[col] = df[col].astype(str).str.strip()
+
+        df[col].replace(
+            ["", " ", "NA", "N/A", "null", "None", "nan", "-", "--", "?"],
+            pd.NA,
+            inplace=True
+        )
+
+    print("\n[DEBUG] Empty string count AFTER cleaning:")
+    for col in df.select_dtypes(include="object").columns:
+        print(col, (df[col] == "").sum())
 
     print(f"[Basic Clean] Shape after cleaning: {df.shape}")
     print(f"[Basic Clean] Missing values:\n{df.isnull().sum()}\n")
@@ -463,14 +476,17 @@ def preprocess_group5(df: pd.DataFrame) -> pd.DataFrame:
             df[f"sym_{symptom}"] = df["symptoms"].apply(
                 lambda x: 1 if isinstance(x, str) and symptom in x.split(",") else 0
             )
-        df.drop(columns=["symptoms"], inplace=True)
+        # Don't drop symptoms column yet – we may want to compare with/without it in ablation later
+        # df.drop(columns=["symptoms"], inplace=True)
 
     # --- 2. Split bp ---
     if "bp" in df.columns:
         bp_split = df["bp"].str.split("/", expand=True)
         df["bp_sys"] = pd.to_numeric(bp_split[0], errors="coerce")
         df["bp_dia"] = pd.to_numeric(bp_split[1], errors="coerce")
-        df.drop(columns=["bp"], inplace=True)
+
+        # Don't drop bp column yet – we may want to compare with/without it in ablation later
+        # df.drop(columns=["bp"], inplace=True)
 
     # --- 3. Derived features ---
     df["severity_x_duration"] = df["severity"] * df["duration_days"]
@@ -484,9 +500,10 @@ def preprocess_group5(df: pd.DataFrame) -> pd.DataFrame:
     for col in df.select_dtypes(include="object").columns:
         df[col].fillna(df[col].mode()[0] if len(df[col].mode()) else "unknown", inplace=True)
 
-    df = encode_categoricals(df)
-    df = encode_target(df)
-    df = drop_non_numeric(df)
+# Will add this later this was the original code
+    # df = encode_categoricals(df)
+    # df = encode_target(df)
+    # df = drop_non_numeric(df)
 
     print(f"[Group 5] Final shape: {df.shape}\n")
     return df
@@ -494,7 +511,7 @@ def preprocess_group5(df: pd.DataFrame) -> pd.DataFrame:
 
 # --------------- GROUP 6 : FEATURE SELECTION -------------------------------
 def preprocess_group6(df: pd.DataFrame, method: str = "mutual_info",
-                      k: int = 8) -> pd.DataFrame:
+                      k: int = 10) -> pd.DataFrame:
     """
     Group 6 – Feature Selection
     ────────────────────────────
@@ -711,29 +728,81 @@ def plot_comparative_metrics(results_df: pd.DataFrame,
     print(f"[Plot] Comparative metrics saved → '{save_path}'\n")
 
 
+# def plot_before_after(before_df: pd.DataFrame, after_df: pd.DataFrame,
+#                       group_name: str, save_path: str = "before_after.png"):
+#     """
+#     Show before vs after distributions for numeric columns after preprocessing.
+#     Used by any group wanting to demonstrate transformation effect.
+#     """
+#     num_cols = [c for c in before_df.select_dtypes(include=[np.number]).columns
+#                 if c in after_df.columns and c != "disease"][:4]
+
+#     if not num_cols:
+#         return
+
+#     fig, axes = plt.subplots(2, len(num_cols), figsize=(len(num_cols) * 4, 6))
+#     fig.suptitle(f"{group_name} – Before vs After Preprocessing", fontsize=12, fontweight="bold")
+
+#     for i, col in enumerate(num_cols):
+#         before_df[col].dropna().hist(bins=25, ax=axes[0, i],
+#                                       color="#66B2FF", edgecolor="white")
+#         axes[0, i].set_title(f"{col} (Before)")
+
+#         after_df[col].dropna().hist(bins=25, ax=axes[1, i],
+#                                      color="#FF9966", edgecolor="white")
+#         axes[1, i].set_title(f"{col} (After)")
+
+#     plt.tight_layout()
+#     plt.savefig(save_path, bbox_inches="tight")
+#     plt.show()
+#     print(f"[Plot] Before/After saved → '{save_path}'\n")
+
 def plot_before_after(before_df: pd.DataFrame, after_df: pd.DataFrame,
                       group_name: str, save_path: str = "before_after.png"):
     """
     Show before vs after distributions for numeric columns after preprocessing.
     Used by any group wanting to demonstrate transformation effect.
     """
+    # --- ORIGINAL LOGIC (kept, but limited usefulness for feature engineering) ---
     num_cols = [c for c in before_df.select_dtypes(include=[np.number]).columns
                 if c in after_df.columns and c != "disease"][:4]
 
-    if not num_cols:
+    # --- NEW: Include engineered columns (important for Group 5) ---
+    engineered_cols = [c for c in after_df.columns
+                       if c not in before_df.columns and after_df[c].dtype != "object"]
+
+    # Limit engineered cols to avoid overcrowding
+    engineered_cols = engineered_cols[:4]
+
+    # Combine both (so old behavior + new visibility)
+    plot_cols = num_cols + engineered_cols
+
+    if not plot_cols:
         return
 
-    fig, axes = plt.subplots(2, len(num_cols), figsize=(len(num_cols) * 4, 6))
+    fig, axes = plt.subplots(2, len(plot_cols), figsize=(len(plot_cols) * 4, 6))
     fig.suptitle(f"{group_name} – Before vs After Preprocessing", fontsize=12, fontweight="bold")
 
-    for i, col in enumerate(num_cols):
-        before_df[col].dropna().hist(bins=25, ax=axes[0, i],
-                                      color="#66B2FF", edgecolor="white")
-        axes[0, i].set_title(f"{col} (Before)")
+    for i, col in enumerate(plot_cols):
 
-        after_df[col].dropna().hist(bins=25, ax=axes[1, i],
-                                     color="#FF9966", edgecolor="white")
-        axes[1, i].set_title(f"{col} (After)")
+        # --- BEFORE ---
+        if col in before_df.columns:
+            before_df[col].dropna().hist(bins=25, ax=axes[0, i],
+                                        color="#66B2FF", edgecolor="white")
+            axes[0, i].set_title(f"{col} (Before)")
+        else:
+            # Engineered feature doesn't exist before
+            axes[0, i].text(0.5, 0.5, "Not Present",
+                            ha='center', va='center', fontsize=10)
+            axes[0, i].set_title(f"{col} (Before)")
+            axes[0, i].set_xticks([])
+            axes[0, i].set_yticks([])
+
+        # --- AFTER ---
+        if col in after_df.columns:
+            after_df[col].dropna().hist(bins=25, ax=axes[1, i],
+                                       color="#FF9966", edgecolor="white")
+            axes[1, i].set_title(f"{col} (After)")
 
     plt.tight_layout()
     plt.savefig(save_path, bbox_inches="tight")
@@ -814,7 +883,7 @@ def main():
     print("=" * 70)
 
     # ── Load shared dataset ────────────────────────────────────────────────
-    raw_df = load_data("medical_data.csv")
+    raw_df = load_data("medical_dataset.csv")
     clean_df = basic_clean(raw_df)
 
     # ── EDA ────────────────────────────────────────────────────────────────
@@ -859,11 +928,20 @@ def main():
     print("─" * 50)
     print("GROUP 5 – FEATURE ENGINEERING")
     g5_before = basic_clean(raw_df)          # for before/after plot
-    g5_df     = preprocess_group5(clean_df)
-    res       = train_and_evaluate(g5_df, "Group 5", "FeatEng")
-    all_results.extend(res)
+    g5_df = preprocess_group5(g5_before.copy())
+    # g5_df = preprocess_group5(clean_df)
+    
     plot_before_after(g5_before, g5_df, "Group 5 – Feature Engineering",
                       save_path="group5_before_after.png")
+    
+    g5_df = encode_categoricals(g5_df)
+    g5_df = encode_target(g5_df)
+    g5_df = drop_non_numeric(g5_df)
+    
+    res = train_and_evaluate(g5_df, "Group 5", "FeatEng")
+    all_results.extend(res)
+    # plot_before_after(g5_before, g5_df, "Group 5 – Feature Engineering",
+    #                   save_path="group5_before_after.png")
 
     # ── GROUP 6 : Feature Selection ────────────────────────────────────────
     print("─" * 50)
